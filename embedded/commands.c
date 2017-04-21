@@ -789,8 +789,8 @@ void commands_process_packet(unsigned char *data, unsigned int len) {
 		}
 		break;
 
-	//case COMM_RELEASE_BATCH:
-	//	starfox_release_batch();
+	case COMM_RELEASE_BATCH:
+		app_starfox_release();
 
 	default:
 		break;
