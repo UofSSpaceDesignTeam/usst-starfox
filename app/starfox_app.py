@@ -7,6 +7,9 @@ from envirophat import motion
 import pyvesc
 from pyvesc import GetValues, SetRPM, SetCurrent, SetRotorPositionMode, GetRotorPosition, BatchRelease
 
+import curses
+from curses_ui import ExperimentUI
+
 class BME_280_Thread(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
@@ -134,6 +137,7 @@ try:
     BME_Thread.start()
     LSM_Thread.start()
     Motor_Thread.start()
+    ncurses_wrapper(ExperiemntUI)
     i = 0
     while True:
         i = i + 1;
