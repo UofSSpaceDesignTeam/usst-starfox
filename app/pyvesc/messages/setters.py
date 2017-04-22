@@ -74,3 +74,12 @@ class SetRotorPositionMode(metaclass=VESCMessage):
     fields = [
         ('pos_mode', 'b')
     ]
+
+class BatchRelease(metaclass=VESCMessage):
+    """
+        Sets the batch release signal.
+        Internally controlled by firmware to be the correct duration.
+    """
+
+    id = 36
+    fields = []
