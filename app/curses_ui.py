@@ -7,7 +7,7 @@ import time
 import math
 
 
-class ExperiemntUI():
+class ExperimentUI():
 
     def __init__(self, stdscr):
 
@@ -86,7 +86,7 @@ class ExperiemntUI():
 
 if __name__ == '__main__':
     try:
-        ncurses_wrapper(ExperiemntUI)
+        ncurses_wrapper(ExperimentUI)
     except KeyboardInterrupt:
         print('Exiting')
         exit()
