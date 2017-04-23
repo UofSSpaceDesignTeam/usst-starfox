@@ -6,7 +6,8 @@ from _datetime import datetime
 from envirophat import motion
 import pyvesc
 from pyvesc import GetValues, SetRPM, SetCurrent, SetRotorPositionMode, GetRotorPosition, BatchRelease
-
+import math 
+from curses import wrapper as ncurses_wrapper
 from curses_ui import ExperimentUI
 
 class BME_280_Thread(threading.Thread):
@@ -119,11 +120,16 @@ def main():
     x=LSMC_values["x"]
     y=LSMC_values["y"]
     z=LSMC_values["z"]
+    magnitude=math.sqrt(z*z+x*x+y*y)
 
 
     to_save.write(str(time_keep))
     to_save.write(',       {0:3.3f},                {1:3.3f},               {2:3.3f},               {3:3.3f},               {4:3.3f},               {5:3.3f},               {6:3.3f},               {7:3.3f},               {8:3.3f},               {9:3.3f}                 '.format(degrees, kilopascals, humidity,x,y,z,rpm,tachometer,watts,current))
     to_save.write('\n')
+    
+    
+    data={"rpm":rpm/(19*12),"acceleration":magnitude,"Temperature":degrees,"Humidity":humidity,"Pressure":kilopascals}
+    UI_Thread.ui_showdata(data)
 
     time.sleep(0.008)
 
@@ -136,9 +142,11 @@ try:
     LSM_Thread.start()
     Motor_Thread.start()
     UI_Thread.start()
+    
 
     while True:
         main()
+        
         
 except KeyboardInterrupt:
     BME_Thread.stop()
