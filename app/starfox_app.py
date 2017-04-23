@@ -7,7 +7,7 @@ from envirophat import motion
 import pyvesc
 from pyvesc import GetValues, SetRPM, SetCurrent, SetRotorPositionMode, GetRotorPosition, BatchRelease
 
-import curses
+from curses import wrapper as ncurses_wrapper
 from curses_ui import ExperimentUI
 
 class BME_280_Thread(threading.Thread):
@@ -129,7 +129,7 @@ def main():
 
 
 
-path = '/home/starfox/Adafruit_Python_BME280/new.txt'
+path = '/home/starfox/log.csv'
 to_save = open(path,'w')
 to_save.write('Timestamp,     Temperature(C),        Pressure(KPA),        Humidity(Percent)          Accelearation(x y z) '+'\n')
 
@@ -137,7 +137,7 @@ try:
     BME_Thread.start()
     LSM_Thread.start()
     Motor_Thread.start()
-    ncurses_wrapper(ExperiemntUI)
+    ncurses_wrapper(ExperimentUI)
     i = 0
     while True:
         i = i + 1;
