@@ -37,17 +37,18 @@ class BME_280_Thread(threading.Thread):
 class LSMC_Thread(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
-        self.acc_values = [0,0,0]
+        self.acc_val_dic = {"x":0,"y":0,"z":0}
         self.quit = False
         print("LSM thread ready!")
 
     def run(self):
         while not self.quit:
-            self.acc_values = [round(x,2) for x in motion.accelerometer()]
+            acc_values = motion.accelerometer()
+            self.acc_val_dic={"x":acc_values[0],"y":acc_values[1],"z":acc_values[2]}
             time.sleep(0.001)
 
-    def return_accel(self):
-        return self.acc_values
+    def return_accel_values(self):
+        return self.acc_val_dic
 
     def stop(self):
         self.quit = True
@@ -91,9 +92,8 @@ class Motor_Thread(threading.Thread):
             time.sleep(0.01)
 
     def return_motor_values(self):
-        motor_list=[self.rpm,self.tachometer,self.watt_hours,self.current_in]
-        #print(motor_list)
-        return motor_list
+        return {"RPM":self.rpm,"Tachometer":self.tachometer,"Watts":self.watt_hours,"Current":self.current_in}
+       
 
     def stop(self):
         self.ser.write(pyvesc.encode(SetCurrent(0)))
@@ -102,27 +102,35 @@ class Motor_Thread(threading.Thread):
 BME_Thread = BME_280_Thread()
 LSM_Thread = LSMC_Thread()
 Motor_Thread = Motor_Thread()
-UI_Thread = ncurses_wrapper(ExperimentUI)
+UI_Thread = ncurses_wrapper(ExperimentUI, Motor_Thread)
 
 def main():
     BME_Values=BME_Thread.return_values()
+    Motor_values=Motor_Thread.return_motor_values()
+    LSMC_values=LSM_Thread.return_accel_values()
     time_keep=(datetime.utcnow().strftime('%S.%f')[:-1])
 
     degrees=BME_Values["Temperature"]
     kilopascals=BME_Values["Pressure"]
     humidity=BME_Values["Humidity"]
-    LSM_values=LSM_Thread.return_accel()
+    rpm=Motor_values["RPM"]
+    tachometer=Motor_values["Tachometer"]
+    watts=Motor_values["Watts"]
+    current=Motor_values["Current"]
+    x=LSMC_values["x"]
+    y=LSMC_values["y"]
+    z=LSMC_values["z"]
 
 
     to_save.write(str(time_keep))
-    to_save.write(',       {0:3.3f},                {1:3.3f},               {2:3.3f},               {3:3.3f},               {4:3.3f},               {5:3.3f}       '.format(degrees, kilopascals, humidity,LSM_values[0],LSM_values[1],LSM_values[2]))
+    to_save.write(',       {0:3.3f},                {1:3.3f},               {2:3.3f},               {3:3.3f},               {4:3.3f},               {5:3.3f},               {6:3.3f},               {7:3.3f},               {8:3.3f},               {9:3.3f}                 '.format(degrees, kilopascals, humidity,x,y,z,rpm,tachometer,watts,current))
     to_save.write('\n')
 
     time.sleep(0.008)
 
 path = '/home/starfox/log.csv'
 to_save = open(path,'w')
-to_save.write('Timestamp,     Temperature(C),        Pressure(KPA),        Humidity(Percent)          Accelearation(x y z) '+'\n')
+to_save.write('Timestamp,     Temperature(C),        Pressure(KPA),        Humidity(Percent),          Accelearation(x y z),                                        RPM,          Tachometer,          Watts,          Current '+'\n')
 
 try:
     BME_Thread.start()
@@ -130,16 +138,9 @@ try:
     Motor_Thread.start()
     UI_Thread.start()
 
-    i = 0
     while True:
-        i = i + 1;
-        if(i == 500):
-            print(i)
-            i = 0
-            Motor_Thread.batch_release()
-        Motor_Thread.set_rpm(222)
-        Motor_Thread.return_motor_values()
         main()
+        
 except KeyboardInterrupt:
     BME_Thread.stop()
     LSM_Thread.stop()
