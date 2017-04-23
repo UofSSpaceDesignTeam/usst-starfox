@@ -7,7 +7,6 @@ from envirophat import motion
 import pyvesc
 from pyvesc import GetValues, SetRPM, SetCurrent, SetRotorPositionMode, GetRotorPosition, BatchRelease
 
-from curses import wrapper as ncurses_wrapper
 from curses_ui import ExperimentUI
 
 class BME_280_Thread(threading.Thread):

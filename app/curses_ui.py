@@ -111,4 +111,5 @@ if __name__ == '__main__':
         ui.start()
     except KeyboardInterrupt:
         print('Exiting')
+        ui.stop()
         exit()
