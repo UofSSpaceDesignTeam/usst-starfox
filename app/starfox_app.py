@@ -34,7 +34,6 @@ class BME_280_Thread(threading.Thread):
     def stop(self):
         self.quit = True
 
-
 class LSMC_Thread(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
@@ -52,7 +51,6 @@ class LSMC_Thread(threading.Thread):
 
     def stop(self):
         self.quit = True
-
 
 class Motor_Thread(threading.Thread):
     def __init__(self):
@@ -101,14 +99,10 @@ class Motor_Thread(threading.Thread):
         self.ser.write(pyvesc.encode(SetCurrent(0)))
         self.quit = True
 
-
-
-
-
-
 BME_Thread = BME_280_Thread()
 LSM_Thread = LSMC_Thread()
 Motor_Thread = Motor_Thread()
+UI_Thread = ncurses_wrapper(ExperimentUI)
 
 def main():
     BME_Values=BME_Thread.return_values()
@@ -126,9 +120,6 @@ def main():
 
     time.sleep(0.008)
 
-
-
-
 path = '/home/starfox/Adafruit_Python_BME280/new.txt'
 to_save = open(path,'w')
 to_save.write('Timestamp,     Temperature(C),        Pressure(KPA),        Humidity(Percent)          Accelearation(x y z) '+'\n')
@@ -137,7 +128,8 @@ try:
     BME_Thread.start()
     LSM_Thread.start()
     Motor_Thread.start()
-    ncurses_wrapper(ExperiemntUI)
+    UI_Thread.start()
+
     i = 0
     while True:
         i = i + 1;
