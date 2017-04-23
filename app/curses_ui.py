@@ -5,20 +5,21 @@ from curses import wrapper as ncurses_wrapper
 import random
 import time
 import math
+import threading
 
 
-class ExperimentUI():
+class ExperimentUI(threading.Thread):
 
     def __init__(self, stdscr):
-
+        threading.Thread.__init__(self)
         self.experiment_name_list = ['Test 1', 'Test 2', 'Test 3', 'Test 4']
         self.experiment_index = 0
         self.width = 0
         self.height = 0
         self.x_pos = 0
-        self.window = stdscr
+        self.quit = False
 
-        self.ui()
+        self.window = stdscr
 
     def ui_showexperiment(self, dir):
         if(dir=='up'):
@@ -54,7 +55,14 @@ class ExperimentUI():
         self.window.addstr(15, 5, "Data 2: {:1.9f}".format(data))
         self.window.addstr(16, 5, "Data 3: {:1.9f}".format(data))
 
-    def ui(self):
+    def stop(self):
+        curses.nocbreak()
+        self.window.keypad(0)
+        curses.echo()
+        curses.endwin()
+        self.quit = True
+
+    def run(self):
         self.window.clear()
         self.window.nodelay(True)
         curses.noecho()
@@ -66,7 +74,7 @@ class ExperimentUI():
         self.window.addstr(10,5,'HELLO WORLD')
         self.ui_showexperiment('none')
 
-        while True:
+        while not self.quit:
 
             y = int(3 * math.cos((self.x_pos/12.0) * math.pi) + 5)
 
@@ -86,7 +94,8 @@ class ExperimentUI():
 
 if __name__ == '__main__':
     try:
-        ncurses_wrapper(ExperimentUI)
+        ui = ncurses_wrapper(ExperimentUI)
+        ui.start()
     except KeyboardInterrupt:
         print('Exiting')
         exit()
