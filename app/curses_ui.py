@@ -10,7 +10,7 @@ import threading
 
 class ExperimentUI(threading.Thread):
 
-    def __init__(self, stdscr):
+    def __init__(self, stdscr, MotorThread=None):
         threading.Thread.__init__(self)
         self.experiment_name_list = ['Test 1', 'Test 2', 'Test 3', 'Test 4']
         self.experiment_index = 0
@@ -18,6 +18,7 @@ class ExperimentUI(threading.Thread):
         self.height = 0
         self.x_pos = 0
         self.quit = False
+        self.MotorThread = MotorThread
 
         self.window = stdscr
 
@@ -98,4 +99,5 @@ if __name__ == '__main__':
         ui.start()
     except KeyboardInterrupt:
         print('Exiting')
+        ui.stop()
         exit()

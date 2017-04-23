@@ -7,7 +7,6 @@ from envirophat import motion
 import pyvesc
 from pyvesc import GetValues, SetRPM, SetCurrent, SetRotorPositionMode, GetRotorPosition, BatchRelease
 
-from curses import wrapper as ncurses_wrapper
 from curses_ui import ExperimentUI
 
 class BME_280_Thread(threading.Thread):
@@ -102,7 +101,7 @@ class Motor_Thread(threading.Thread):
 BME_Thread = BME_280_Thread()
 LSM_Thread = LSMC_Thread()
 Motor_Thread = Motor_Thread()
-UI_Thread = ncurses_wrapper(ExperimentUI)
+UI_Thread = ExperimentUI(Motor_Thread)
 
 def main():
     BME_Values=BME_Thread.return_values()
