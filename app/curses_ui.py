@@ -6,29 +6,33 @@ import random
 import time
 import math
 import threading
+from _datetime import datetime
 
+
+ 
 
 class ExperimentUI(threading.Thread):
 
     def __init__(self, stdscr, MotorThread=None):
         threading.Thread.__init__(self)
-        self.experiment_name_list = ['Test 1', 'Test 2', 'Test 3', 'Test 4']
+        self.experiment_name_list = ['68RPM Test', '96RPM Test', '118RPM Test', '200RPM Test']
         self.experiment_index = 0
         self.width = 0
         self.height = 0
         self.x_pos = 0
         self.quit = False
+        self.time_keep=(datetime.utcnow().strftime('%M.%S.%f')[:-1])
 
         self.MotorThread = MotorThread
 
         self.window = stdscr
 
     def ui_showexperiment(self, dir):
-        test1={"name":'Test 1',"rpm":68,"time":20}
-        test2={"name":'Test 2',"rpm":96,"time":20}
-        test3={"name":'Test 3',"rpm":118,"time":20}
-        test4={"name":'Test 4',"rpm":200,"time":20}
-        all_tests=[test1,test2,test3,test4]
+        self.test1={"name":'68RPM Test',"rpm":68,"time":3}
+        self.test2={"name":'96RPM Test',"rpm":96,"time":20}
+        self.test3={"name":'118RPM Test',"rpm":118,"time":20}
+        self.test4={"name":'200RPM Test',"rpm":200,"time":20}
+        all_tests=[self.test1,self.test2,self.test3,self.test4]
 
         if(dir=='up'):
             self.experiment_index = self.experiment_index + 1
@@ -44,13 +48,16 @@ class ExperimentUI(threading.Thread):
                     self.MotorThread.set_rpm(i["rpm"])
 
         elif(dir=='right'):
+            self.window.addstr(26,5, "BATCH RELEASED AT {}".format(datetime.utcnow().strftime('%M.%S.%f')[:-1]))
             self.window.addstr(10,5, "BATCH RELEASE         ")
+            
 
             for i in all_tests:
                 if i["name"]==self.experiment_name_list[self.experiment_index]:
                     self.MotorThread.batch_release()
                     timer=threading.Timer(i["time"], self.stop_motor)
                     timer.start()
+                    
 
         elif(dir=='anything'):
             self.window.addstr(10,5, "STOP               ")
@@ -80,15 +87,21 @@ class ExperimentUI(threading.Thread):
 
     def stop_motor(self):
         self.MotorThread.set_rpm(0)
+        self.batch_timer()
+        
+    def batch_timer(self):
+        self.batch_time=self.window.addstr(27,5, "TEST ENDED AT {}".format(datetime.utcnow().strftime('%M.%S.%f')[:-1]))
 
     def ui_showdata(self, data):
-        self.window.addstr(14, 5, "RPM: {:1.9f}".format(data["rpm"]))
-        self.window.addstr(15, 5, "Acceleration: {:1.9f}".format(data["acceleration"]))
-        self.window.addstr(16, 5, "Temperature: {:1.9f}".format(data["Temperature"]))
-        self.window.addstr(17, 5, "Humidity: {:1.9f}".format(data["Humidity"]))
-        self.window.addstr(18, 5, "Pressure: {:1.9f}".format(data["Pressure"]))
-
-
+        
+        self.window.addstr(14, 5, "RPM: {:1.4f}".format(data["rpm"]))
+        self.window.addstr(15, 5, "Acceleration: {:1.4f}".format(data["acceleration"]))
+        self.window.addstr(16, 5, "Temperature: {:1.4f}".format(data["Temperature"]))
+        self.window.addstr(17, 5, "Humidity: {:1.4f}".format(data["Humidity"]))
+        self.window.addstr(18, 5, "Pressure: {:1.4f}".format(data["Pressure"]))
+        self.window.addstr(19, 5, "Time:")
+        self.window.addstr(19, 11, (datetime.utcnow().strftime('%M.%S.%f')[:-1]))
+        
     def stop(self):
         curses.nocbreak()
         self.window.keypad(0)
@@ -109,6 +122,10 @@ class ExperimentUI(threading.Thread):
 
         self.window.addstr(10,5,'Idle')
         self.ui_showexperiment('none')
+        self.window.addstr(21, 5, "CONTROLS:")
+        self.window.addstr(22, 5, "space to start RPM")
+        self.window.addstr(23, 5, "right arrow to release batch:")
+        self.window.addstr(24, 5, "any button to stop rpm")
 
         while not self.quit:
 

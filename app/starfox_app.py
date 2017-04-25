@@ -108,12 +108,12 @@ def main():
     BME_Values=BME_Thread.return_values()
     Motor_values=Motor_Thread.return_motor_values()
     LSMC_values=LSM_Thread.return_accel_values()
-    time_keep=(datetime.utcnow().strftime('%S.%f')[:-1])
+    time_keep=(datetime.utcnow().strftime('%M.%S.%f')[:-1])
 
     degrees=BME_Values["Temperature"]
     kilopascals=BME_Values["Pressure"]
     humidity=BME_Values["Humidity"]
-    rpm=Motor_values["RPM"]
+    rpm=Motor_values["RPM"]/(19*12)
     tachometer=Motor_values["Tachometer"]
     watts=Motor_values["Watts"]
     current=Motor_values["Current"]
@@ -128,14 +128,14 @@ def main():
     to_save.write('\n')
     
     
-    data={"rpm":rpm/(19*12),"acceleration":magnitude,"Temperature":degrees,"Humidity":humidity,"Pressure":kilopascals}
+    data={"rpm":rpm,"acceleration":magnitude,"Temperature":degrees,"Humidity":humidity,"Pressure":kilopascals}
     UI_Thread.ui_showdata(data)
 
     time.sleep(0.008)
 
 path = '/home/starfox/log.csv'
 to_save = open(path,'w')
-to_save.write('Timestamp,     Temperature(C),        Pressure(KPA),        Humidity(Percent),          Accelearation(x y z),                                        RPM,          Tachometer,          Watts,          Current '+'\n')
+to_save.write('Timestamp,     Temperature(C),        Pressure(KPA),        Humidity(Percent),          Accelearation(x y z), , ,                                       RPM,          Tachometer,          Watts,          Current '+'\n')
 
 try:
     BME_Thread.start()
