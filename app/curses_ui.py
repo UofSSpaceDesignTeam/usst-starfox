@@ -24,10 +24,10 @@ class ExperimentUI(threading.Thread):
         self.window = stdscr
 
     def ui_showexperiment(self, dir):
-        test1={"name":'Test 1',"rpm":50,"time":4}
-        test2={"name":'Test 2',"rpm":80,"time":6}
-        test3={"name":'Test 3',"rpm":120,"time":8}
-        test4={"name":'Test 4',"rpm":200,"time":10}
+        test1={"name":'Test 1',"rpm":68,"time":20}
+        test2={"name":'Test 2',"rpm":96,"time":20}
+        test3={"name":'Test 3',"rpm":118,"time":20}
+        test4={"name":'Test 4',"rpm":200,"time":20}
         all_tests=[test1,test2,test3,test4]
 
         if(dir=='up'):
@@ -123,7 +123,7 @@ class ExperimentUI(threading.Thread):
                 self.ui_showexperiment('down')
             elif(key == ord(' ')):
                 self.ui_showexperiment('space')
-            elif(key == curses.KEY_UP):
+            elif(key == curses.KEY_RIGHT):
                 self.ui_showexperiment('shift')
             elif(key != curses.ERR):
                 self.ui_showexperiment('anything')
