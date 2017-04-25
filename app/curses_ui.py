@@ -43,7 +43,7 @@ class ExperimentUI(threading.Thread):
                 if i["name"]==self.experiment_name_list[self.experiment_index]:
                     self.MotorThread.set_rpm(i["rpm"])
 
-        elif(dir=='shift')
+        elif(dir=='shift'):
             self.window.addstr(10,5, "BATCH RELEASE         ")
 
             for i in all_tests:
@@ -123,7 +123,7 @@ class ExperimentUI(threading.Thread):
                 self.ui_showexperiment('down')
             elif(key == ord(' ')):
                 self.ui_showexperiment('space')
-            elif(key == curses.KEY_UP)
+            elif(key == curses.KEY_UP):
                 self.ui_showexperiment('shift')
             elif(key != curses.ERR):
                 self.ui_showexperiment('anything')
