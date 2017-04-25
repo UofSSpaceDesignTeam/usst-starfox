@@ -24,32 +24,38 @@ class ExperimentUI(threading.Thread):
         self.window = stdscr
 
     def ui_showexperiment(self, dir):
-        test1={"name":'Test 1',"rpm":10,"time":4}
-        test2={"name":'Test 2',"rpm":50,"time":6}
-        test3={"name":'Test 3',"rpm":100,"time":8}
+        test1={"name":'Test 1',"rpm":50,"time":4}
+        test2={"name":'Test 2',"rpm":80,"time":6}
+        test3={"name":'Test 3',"rpm":120,"time":8}
         test4={"name":'Test 4',"rpm":200,"time":10}
         all_tests=[test1,test2,test3,test4]
-    
+
         if(dir=='up'):
             self.experiment_index = self.experiment_index + 1
-            
+
         elif(dir=='down'):
             self.experiment_index = self.experiment_index - 1
-            
+
         elif(dir=='space'):
             self.window.addstr(10,5, "RUNNING             ")
-            
+
             for i in all_tests:
                 if i["name"]==self.experiment_name_list[self.experiment_index]:
                     self.MotorThread.set_rpm(i["rpm"])
+
+        elif(dir=='shift')
+            self.window.addstr(10,5, "BATCH RELEASE         ")
+
+            for i in all_tests:
+                if i["name"]==self.experiment_name_list[self.experiment_index]:
+                    self.MotorThread.batch_release()
                     timer=threading.Timer(i["time"], self.stop_motor)
-                    timer.start()    
-                    
-        
+                    timer.start()
+
         elif(dir=='anything'):
-            self.window.addstr(10,5, "Stop         ")
+            self.window.addstr(10,5, "STOP               ")
             self.MotorThread.set_rpm(0)
-            
+
 
         if(self.experiment_index < 0):
             self.experiment_index = 0
@@ -71,7 +77,7 @@ class ExperimentUI(threading.Thread):
             yval = 0
 
         self.window.addch(yval, self.x_pos, "*")
-        
+
     def stop_motor(self):
         self.MotorThread.set_rpm(0)
 
@@ -81,8 +87,8 @@ class ExperimentUI(threading.Thread):
         self.window.addstr(16, 5, "Temperature: {:1.9f}".format(data["Temperature"]))
         self.window.addstr(17, 5, "Humidity: {:1.9f}".format(data["Humidity"]))
         self.window.addstr(18, 5, "Pressure: {:1.9f}".format(data["Pressure"]))
-        
-        
+
+
     def stop(self):
         curses.nocbreak()
         self.window.keypad(0)
@@ -91,13 +97,13 @@ class ExperimentUI(threading.Thread):
         self.quit = True
 
     def run(self):
-    
+
         self.window.clear()
         self.window.nodelay(True)
         curses.noecho()
         curses.cbreak()
         self.window.keypad(True)
-        
+
 
         (self.height, self.width) = self.window.getmaxyx()
 
@@ -117,9 +123,11 @@ class ExperimentUI(threading.Thread):
                 self.ui_showexperiment('down')
             elif(key == ord(' ')):
                 self.ui_showexperiment('space')
+            elif(key == curses.KEY_UP)
+                self.ui_showexperiment('shift')
             elif(key != curses.ERR):
                 self.ui_showexperiment('anything')
-                
+
 
             self.window.refresh()
             time.sleep(0.05)
