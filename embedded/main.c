@@ -156,6 +156,9 @@ int main(void) {
 	halInit();
 	chSysInit();
 
+	palSetPadMode(HW_ICU_GPIO, HW_ICU_PIN, PAL_MODE_OUTPUT_PUSHPULL);
+	palClearPad(HW_ICU_GPIO, HW_ICU_PIN);
+
 	chThdSleepMilliseconds(1000);
 
 	hw_init_gpio();
@@ -190,9 +193,11 @@ int main(void) {
 
 #if SERVO_OUT_ENABLE
 #if SERVO_OUT_SIMPLE
-	servo_simple_init();
+	//servo_simple_init();
+	servo_stop_driver();
 #else
-	servo_init();
+	//servo_init();
+	servo_stop_driver();
 #endif
 #endif
 

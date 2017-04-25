@@ -38,6 +38,8 @@ static THD_FUNCTION(starfox_thread, arg) {
 
     float pot;
 	bool manual_set = false;
+	
+	palClearPad(HW_ICU_GPIO, HW_ICU_PIN);
 
 	chRegSetThreadName("APP_STARFOX");
 
