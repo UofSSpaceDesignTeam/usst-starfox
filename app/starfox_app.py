@@ -67,7 +67,7 @@ class Motor_Thread(threading.Thread):
 
     def set_rpm(self,rpm):
         try:
-            self.rpm_set = rpm
+            self.rpm_set = -rpm
         except:
             pass
 

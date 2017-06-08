@@ -28,7 +28,7 @@ class ExperimentUI(threading.Thread):
         self.window = stdscr
 
     def ui_showexperiment(self, dir):
-        self.test1={"name":'68RPM Test',"rpm":68,"time":3}
+        self.test1={"name":'68RPM Test',"rpm":68,"time":20}
         self.test2={"name":'96RPM Test',"rpm":96,"time":20}
         self.test3={"name":'118RPM Test',"rpm":118,"time":20}
         self.test4={"name":'200RPM Test',"rpm":200,"time":20}
