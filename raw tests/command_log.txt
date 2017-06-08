@@ -1,0 +1,179 @@
+65 RPM test started at 05.34.30.40
+65 RPM test started at 05.34.31.08
+65 RPM test started at 05.34.54.69
+The batch Has been released at 05.34.55.47
+65 RPM test started at 05.34.59.83
+The batch Has been released at 05.34.59.85
+65 RPM test started at 05.35.16.74
+65 RPM test started at 05.35.19.29
+The batch Has been released at 05.35.19.93
+65 RPM test started at 05.35.21.56
+The batch Has been released at 05.35.22.62
+65 RPM test started at 05.35.24.79
+The batch Has been released at 05.35.25.17
+Power to the motor has been killed at 05.35.25.48
+65 RPM test started at 05.35.26.76
+The batch Has been released at 05.35.27.06
+65 RPM test started at 05.35.29.79
+The batch Has been released at 05.35.30.31
+65 RPM test started at 05.35.34.11
+The batch Has been released at 05.35.34.55
+65 RPM test started at 05.35.36.11
+The batch Has been released at 05.35.36.66
+65 RPM test started at 05.37.12.86
+The batch Has been released at 05.37.13.71
+65 RPM test started at 05.37.17.57
+65 RPM test started at 05.37.20.78
+Power to the motor has been killed at 05.37.34.55
+65 RPM test started at 05.37.34.55
+65 RPM test started at 05.37.34.58
+The batch Has been released at 05.37.37.11
+65 RPM test started at 05.44.42.18
+The batch Has been released at 05.44.44.57
+65 RPM test started at 07.03.49.76
+100 RPM test started at 07.03.50.88
+100 RPM test started at 07.03.54.19
+65 RPM test started at 07.03.55.19
+100 RPM test started at 07.03.55.61
+120 RPM test started at 07.03.56.00
+The batch Has been released at 07.03.57.59
+100 RPM test started at 07.04.27.88
+The batch Has been released at 07.04.28.06
+Power to the motor has been killed at 07.04.32.71
+65 RPM test started at 07.04.41.53
+65 RPM test started at 07.06.29.09
+65 RPM test started at 07.07.58.41
+100 RPM test started at 07.08.00.09
+120 RPM test started at 07.08.00.92
+65 RPM test started at 07.14.45.00
+The batch Has been released at 07.20.50.40
+The batch Has been released at 07.20.52.17
+65 RPM test started at 07.20.55.81
+100 RPM test started at 07.20.56.61
+120 RPM test started at 07.20.57.00
+65 RPM test started at 07.21.14.74
+100 RPM test started at 07.21.15.09
+The batch Has been released at 07.21.16.86
+Power to the motor has been killed at 07.21.21.20
+65 RPM test started at 07.21.27.60
+100 RPM test started at 07.21.28.52
+120 RPM test started at 07.21.29.37
+65 RPM test started at 07.21.31.46
+100 RPM test started at 07.21.32.08
+120 RPM test started at 07.21.32.60
+65 RPM test started at 07.21.33.98
+100 RPM test started at 07.21.34.03
+65 RPM test started at 07.21.34.22
+100 RPM test started at 07.21.34.30
+65 RPM test started at 07.21.34.48
+120 RPM test started at 07.21.34.58
+100 RPM test started at 07.21.34.59
+100 RPM test started at 07.21.34.88
+65 RPM test started at 07.21.34.99
+100 RPM test started at 07.21.35.05
+65 RPM test started at 07.21.35.24
+120 RPM test started at 07.21.35.24
+65 RPM test started at 07.21.35.42
+100 RPM test started at 07.21.35.47
+65 RPM test started at 07.21.35.72
+120 RPM test started at 07.21.35.81
+120 RPM test started at 07.21.35.94
+65 RPM test started at 07.21.36.18
+100 RPM test started at 07.21.36.28
+65 RPM test started at 07.21.36.42
+100 RPM test started at 07.21.36.46
+100 RPM test started at 07.21.36.71
+120 RPM test started at 07.21.37.03
+65 RPM test started at 07.21.37.13
+100 RPM test started at 07.21.37.14
+120 RPM test started at 07.21.37.22
+65 RPM test started at 07.21.37.33
+100 RPM test started at 07.21.37.35
+120 RPM test started at 07.21.37.48
+65 RPM test started at 07.21.37.59
+100 RPM test started at 07.21.37.64
+120 RPM test started at 07.21.37.76
+65 RPM test started at 07.21.37.86
+100 RPM test started at 07.21.37.90
+120 RPM test started at 07.21.38.06
+65 RPM test started at 07.21.38.16
+100 RPM test started at 07.21.38.22
+120 RPM test started at 07.21.38.38
+65 RPM test started at 07.21.38.50
+100 RPM test started at 07.21.38.53
+The batch Has been released at 07.21.38.88
+65 RPM test started at 07.21.38.95
+100 RPM test started at 07.21.38.97
+The batch Has been released at 07.21.39.12
+120 RPM test started at 07.21.39.12
+65 RPM test started at 07.21.39.26
+100 RPM test started at 07.21.39.30
+The batch Has been released at 07.21.39.38
+120 RPM test started at 07.21.39.39
+65 RPM test started at 07.21.39.52
+100 RPM test started at 07.21.39.54
+120 RPM test started at 07.21.39.66
+65 RPM test started at 07.21.39.80
+100 RPM test started at 07.21.39.87
+The batch Has been released at 07.21.39.91
+120 RPM test started at 07.21.39.91
+65 RPM test started at 07.21.40.06
+100 RPM test started at 07.21.40.12
+The batch Has been released at 07.21.40.15
+120 RPM test started at 07.21.40.22
+65 RPM test started at 07.21.40.37
+100 RPM test started at 07.21.40.42
+The batch Has been released at 07.21.40.57
+120 RPM test started at 07.21.40.57
+65 RPM test started at 07.21.40.73
+100 RPM test started at 07.21.40.77
+The batch Has been released at 07.21.40.90
+120 RPM test started at 07.21.40.91
+65 RPM test started at 07.21.41.07
+100 RPM test started at 07.21.41.10
+The batch Has been released at 07.21.41.24
+120 RPM test started at 07.21.41.24
+65 RPM test started at 07.21.41.38
+100 RPM test started at 07.21.41.44
+120 RPM test started at 07.21.41.56
+The batch Has been released at 07.21.41.62
+65 RPM test started at 07.21.41.74
+100 RPM test started at 07.21.41.85
+The batch Has been released at 07.21.42.13
+120 RPM test started at 07.21.42.16
+65 RPM test started at 07.21.42.26
+100 RPM test started at 07.21.42.32
+120 RPM test started at 07.21.42.66
+The batch Has been released at 07.21.42.93
+100 RPM test started at 07.21.43.16
+65 RPM test started at 07.21.43.22
+The batch Has been released at 07.21.43.54
+120 RPM test started at 07.21.43.72
+100 RPM test started at 07.21.44.03
+65 RPM test started at 07.21.44.14
+100 RPM test started at 07.21.44.36
+The batch Has been released at 07.21.44.37
+120 RPM test started at 07.21.44.64
+100 RPM test started at 07.21.44.93
+65 RPM test started at 07.21.45.03
+The batch Has been released at 07.21.45.13
+100 RPM test started at 07.21.45.31
+120 RPM test started at 07.21.45.62
+The batch Has been released at 07.21.45.87
+65 RPM test started at 07.21.45.91
+100 RPM test started at 07.21.45.93
+65 RPM test started at 07.21.46.28
+The batch Has been released at 07.21.46.43
+120 RPM test started at 07.21.46.44
+65 RPM test started at 07.21.46.59
+100 RPM test started at 07.21.46.69
+65 RPM test started at 07.21.47.60
+120 RPM test started at 07.21.47.72
+The batch Has been released at 07.21.47.82
+65 RPM test started at 07.21.47.96
+The batch Has been released at 07.21.48.21
+65 RPM test started at 07.21.48.41
+100 RPM test started at 07.21.48.59
+65 RPM test started at 07.21.48.80
+100 RPM test started at 07.21.54.79
+120 RPM test started at 07.21.55.07

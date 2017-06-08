@@ -1,0 +1,6 @@
+The experiment started at 06.51.11.85
+Power to the motor has been killed at 06.51.12.34
+The experiment started at 06.54.45.31
+Power to the motor has been killed at 06.54.45.91
+The experiment started at 06.58.25.76
+Power to the motor has been killed at 06.58.26.21
